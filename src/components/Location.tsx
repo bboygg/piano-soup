@@ -15,8 +15,8 @@ export default function Location() {
       return;
     }
 
-    // Use oapi.map.naver.com as per NCP documentation
-    const scriptUrl = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}&submodules=geocoder`;
+    // Load Naver Maps script
+    const scriptUrl = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}`;
 
     if (!document.getElementById('naver-maps-script')) {
       const script = document.createElement('script');
@@ -29,42 +29,16 @@ export default function Location() {
       
       document.head.appendChild(script);
     } else {
-      // If script exists, ensure it has the submodule or just trigger load
       setIsLoaded(true);
     }
   }, []);
 
   useEffect(() => {
     if (isLoaded && mapRef.current && window.naver && window.naver.maps) {
-      const address = "경상북도 영주시 번영로102번길 30";
-      
-      const initializeGeocoding = () => {
-        // Double check if Service submodule is actually available
-        if (!window.naver.maps.Service || !window.naver.maps.Service.geocode) {
-          console.log("Naver Maps Service not yet available, retrying...");
-          setTimeout(initializeGeocoding, 200);
-          return;
-        }
-
-        window.naver.maps.Service.geocode({
-          query: address
-        }, (status: any, response: any) => {
-          if (status !== window.naver.maps.Service.Status.OK) {
-            console.error("Geocoding failed:", status);
-            // Fallback to coordinates if geocoding fails
-            const fallbackLocation = new window.naver.maps.LatLng(36.8212226, 128.6301698);
-            renderMap(fallbackLocation);
-            return;
-          }
-
-          const result = response.v2.addresses[0];
-          const location = new window.naver.maps.LatLng(result.y, result.x);
-          renderMap(location);
-        });
-      };
-
-      const renderMap = (location: any) => {
-        if (!mapRef.current) return;
+      try {
+        // Use coordinates directly for maximum stability
+        // Exact location for 경상북도 영주시 번영로102번길 30
+        const location = new window.naver.maps.LatLng(36.8212226, 128.6301698);
         
         const mapOptions = {
           center: location,
@@ -82,9 +56,10 @@ export default function Location() {
           map: map,
           title: '피아노숲 음악교습소',
         });
-      };
-
-      initializeGeocoding();
+      } catch (e) {
+        console.error("Naver Map Render Error:", e);
+        setAuthError(true);
+      }
     }
   }, [isLoaded]);
 
