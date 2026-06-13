@@ -19,7 +19,7 @@ export default function Hero() {
             className="max-w-2xl"
           >
             <span className="inline-block px-4 py-1.5 bg-piano-green/10 text-piano-green text-xs font-bold rounded-full mb-6 tracking-wider uppercase">
-              COZY MUSIC STUDIO
+              PIANO SOUP MUSIC STUDIO
             </span>
             <h1 className="text-3xl lg:text-4xl font-bold text-piano-black leading-[1.3] mb-8 break-keep font-serif">
               일상 속 작은 숲, <br />
