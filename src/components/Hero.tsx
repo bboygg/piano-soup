@@ -22,7 +22,7 @@ export default function Hero() {
               PIANO SOUP MUSIC STUDIO
             </span>
             <h1 className="text-xl sm:text-3xl lg:text-5xl font-bold text-piano-black leading-[1.3] mb-4 sm:mb-8 break-keep font-serif">
-              <span className="inline-block pl-2 sm:pl-7 mb-2">일상 속 작은 숲,</span> <br />
+              <span className="inline-block pl-1 sm:pl-5 mb-2">일상 속 작은 숲,</span> <br />
               <span className="text-piano-green text-3xl sm:text-4xl lg:text-7xl">피아노숲</span> <br className="sm:hidden" />
               <span className="text-sm sm:text-xl lg:text-3xl font-sans font-medium text-gray-400">음악교습소</span>
             </h1>
@@ -30,16 +30,16 @@ export default function Hero() {
               맑은 공기와 평온함이 가득한 이곳에서 <br className="hidden sm:block" />
               당신의 음악적 감성을 더욱 깊고 풍성하게 가꾸어 드립니다.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div className="flex flex-row gap-2 sm:gap-4">
               <Link 
                 href="#programs" 
-                className="px-4 sm:px-8 py-2.5 sm:py-4 bg-piano-green text-white text-[10px] sm:text-base font-bold rounded-lg sm:rounded-xl text-center hover:bg-piano-green-light transition-all shadow-xl shadow-piano-green/20 active:scale-95"
+                className="px-3 sm:px-8 py-2 sm:py-4 bg-piano-green text-white text-[10px] sm:text-base font-bold rounded-lg sm:rounded-xl text-center hover:bg-piano-green-light transition-all shadow-xl shadow-piano-green/20 active:scale-95"
               >
                 교육 프로그램
               </Link>
               <Link 
                 href="#location" 
-                className="px-4 sm:px-8 py-2.5 sm:py-4 bg-white border border-piano-green sm:border-2 text-piano-green text-[10px] sm:text-base font-bold rounded-lg sm:rounded-xl text-center hover:bg-piano-green/5 transition-all active:scale-95"
+                className="px-3 sm:px-8 py-2 sm:py-4 bg-white border border-piano-green sm:border-2 text-piano-green text-[10px] sm:text-base font-bold rounded-lg sm:rounded-xl text-center hover:bg-piano-green/5 transition-all active:scale-95"
               >
                 오시는 길
               </Link>

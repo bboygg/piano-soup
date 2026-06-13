@@ -69,11 +69,11 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-4">
+            <div className="pt-4 flex justify-start">
               <Link 
                 href="#consultation" 
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-center px-5 py-4 bg-piano-green text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-transform"
+                className="inline-block px-6 py-3 bg-piano-green text-white font-bold rounded-xl shadow-lg active:scale-95 transition-transform text-sm"
               >
                 상담 문의하기
               </Link>
