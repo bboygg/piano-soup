@@ -19,7 +19,8 @@ export default function Location() {
     if (!document.getElementById('naver-maps-script')) {
       const script = document.createElement('script');
       script.id = 'naver-maps-script';
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}`;
+      // Added &submodules=geocoder to enable geocoding service
+      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}&submodules=geocoder`;
       script.async = true;
       
       script.onload = () => setIsLoaded(true);
@@ -34,27 +35,39 @@ export default function Location() {
   useEffect(() => {
     if (isLoaded && mapRef.current && window.naver) {
       try {
-        // Precise coordinates for 경상북도 영주시 번영로102번길 30
-        const location = new window.naver.maps.LatLng(36.8118, 128.6277);
+        const address = "경상북도 영주시 번영로102번길 30";
         
-        const mapOptions = {
-          center: location,
-          zoom: 16,
-          zoomControl: true,
-          zoomControlOptions: {
-            position: window.naver.maps.Position.TOP_RIGHT
+        // Use Naver Geocoder Service to find coordinates for the address
+        window.naver.maps.Service.geocode({
+          query: address
+        }, (status: any, response: any) => {
+          if (status !== window.naver.maps.Service.Status.OK) {
+            console.error("Geocoding failed:", status);
+            return;
           }
-        };
 
-        const map = new window.naver.maps.Map(mapRef.current, mapOptions);
+          const result = response.v2.addresses[0];
+          const location = new window.naver.maps.LatLng(result.y, result.x);
+          
+          const mapOptions = {
+            center: location,
+            zoom: 17,
+            zoomControl: true,
+            zoomControlOptions: {
+              position: window.naver.maps.Position.TOP_RIGHT
+            }
+          };
 
-        new window.naver.maps.Marker({
-          position: location,
-          map: map,
-          title: '피아노숲 음악교습소',
+          const map = new window.naver.maps.Map(mapRef.current!, mapOptions);
+
+          new window.naver.maps.Marker({
+            position: location,
+            map: map,
+            title: '피아노숲 음악교습소',
+          });
         });
       } catch (e) {
-        console.error("Naver Map Init Error:", e);
+        console.error("Naver Map Geocoder Error:", e);
         setAuthError(true);
       }
     }
@@ -134,7 +147,7 @@ export default function Location() {
 }
 
 declare global {
-  interface window {
+  interface Window {
     naver: any;
   }
 }
