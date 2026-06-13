@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen relative">
+    <main className="min-h-screen relative overflow-x-hidden">
       <Header />
       <Hero />
       
@@ -27,11 +27,12 @@ export default function Home() {
       <section id="about" className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <h2 className="text-3xl md:text-5xl font-bold text-piano-black mb-8 leading-tight">
                   왜 <span className="text-piano-green">피아노숲</span> 인가요?
@@ -61,9 +62,9 @@ export default function Home() {
               </motion.div>
             </div>
             
-            <div className="flex-1 relative">
+            <div className="flex-1 relative w-full">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 className="relative z-10"
@@ -86,11 +87,12 @@ export default function Home() {
       <section id="teacher" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <span className="text-piano-green font-bold text-sm tracking-widest uppercase mb-4 block">Meet the Teacher</span>
                 <h2 className="text-3xl md:text-5xl font-bold text-piano-black mb-8 leading-tight font-serif">
@@ -116,9 +118,9 @@ export default function Home() {
               </motion.div>
             </div>
             
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <div className="aspect-[4/5] bg-white rounded-[40px] overflow-hidden shadow-2xl border-8 border-white relative group">
-                <div className="absolute inset-0 bg-piano-green/5 flex items-center justify-center text-piano-green/20 font-serif italic text-2xl group-hover:scale-105 transition-transform duration-700">
+                <div className="absolute inset-0 bg-piano-green/5 flex items-center justify-center text-piano-green/20 font-serif italic text-2xl">
                   Teacher Photo
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-piano-black/50 to-transparent">
@@ -137,9 +139,10 @@ export default function Home() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight font-serif">
               피아노숲에서 시작하는 <br />
@@ -147,27 +150,27 @@ export default function Home() {
             </h2>
             <p className="text-white/70 text-lg mb-12 leading-relaxed">
               상담은 예약제로 진행됩니다. <br />
-              방문 전 미리 연락 주시면 소중한 상담 시간을 비워두겠습니다. 
+              방문 전 미리 연락 주시면 소중한 상담 시간을 비워두겠습니다. <br className="hidden sm:block" />
               부담 없이 편안하게 문의해 주세요.
             </p>
             
-            <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <button 
                 onClick={handleCopyPhone}
-                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center group"
+                className="bg-white/10 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center group w-full max-w-xs sm:max-w-none mx-auto active:scale-95"
               >
                 <h4 className="text-white font-bold mb-4 text-xl">상담 예약 및 문의</h4>
-                <p className="text-white text-2xl group-hover:scale-105 transition-transform">054-633-1999</p>
+                <p className="text-white text-xl sm:text-2xl font-bold group-hover:scale-105 transition-transform">054-633-1999</p>
                 <p className="text-xs text-white/40 mt-4">클릭하여 번호 복사</p>
               </button>
               
               <a 
                 href="https://open.kakao.com/o/sXXXXXXXX" 
                 target="_blank"
-                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center group flex flex-col justify-center"
+                className="bg-white/10 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center group flex flex-col justify-center w-full max-w-xs sm:max-w-none mx-auto active:scale-95"
               >
                 <h4 className="text-white font-bold mb-4 text-xl">카카오톡 상담</h4>
-                <p className="text-white text-2xl group-hover:scale-105 transition-transform">실시간 오픈채팅 문의</p>
+                <p className="text-white text-xl sm:text-2xl font-bold group-hover:scale-105 transition-transform">실시간 오픈채팅 문의</p>
                 <p className="text-xs text-white/40 mt-4">클릭하여 채팅 시작</p>
               </a>
             </div>
@@ -182,7 +185,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="aspect-square bg-gray-100 rounded-2xl overflow-hidden hover:opacity-90 transition-opacity cursor-pointer">
-                <div className="w-full h-full flex items-center justify-center text-gray-300">Image {i}</div>
+                <div className="w-full h-full flex items-center justify-center text-gray-300 text-sm italic">Piano Forest {i}</div>
               </div>
             ))}
           </div>
@@ -205,15 +208,16 @@ export default function Home() {
       <AnimatePresence>
         {showToast && (
           <motion.div
-            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            initial={{ opacity: 0, y: 20, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
-            exit={{ opacity: 0, y: 20, x: '-50%' }}
-            className="fixed bottom-10 left-1/2 z-[100] bg-piano-black text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-white/10"
+            exit={{ opacity: 0, scale: 0.95, x: '-50%' }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-10 left-1/2 z-[100] bg-piano-black text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-white/10 w-[90%] max-w-xs sm:max-w-none sm:w-auto"
           >
-            <div className="w-5 h-5 bg-piano-green rounded-full flex items-center justify-center">
+            <div className="w-5 h-5 bg-piano-green rounded-full flex items-center justify-center flex-shrink-0">
               <Check size={12} className="text-white" />
             </div>
-            <span className="text-sm font-medium">전화번호가 클립보드에 복사되었습니다.</span>
+            <span className="text-sm font-medium whitespace-nowrap">전화번호가 클립보드에 복사되었습니다.</span>
           </motion.div>
         )}
       </AnimatePresence>

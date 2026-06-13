@@ -48,8 +48,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© 2026 PIANO SOUP MUSIC STUDIO. All rights reserved.</p>
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 text-center md:text-left">
+          <p>© 2026 PIANO SOUP MUSIC STUDIO. <br className="md:hidden" /> All rights reserved.</p>
         </div>
       </div>
     </footer>

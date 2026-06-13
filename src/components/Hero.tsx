@@ -29,16 +29,16 @@ export default function Hero() {
               맑은 공기와 평온함이 가득한 이곳에서 <br className="hidden sm:block" />
               당신의 음악적 감성을 더욱 깊고 풍성하게 가꾸어 드립니다.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-xs sm:max-w-none">
               <Link 
                 href="#programs" 
-                className="px-8 py-4 bg-piano-green text-white font-bold rounded-xl text-center hover:bg-piano-green-light transition-all shadow-xl shadow-piano-green/20"
+                className="px-8 py-4 bg-piano-green text-white font-bold rounded-xl text-center hover:bg-piano-green-light transition-all shadow-xl shadow-piano-green/20 active:scale-95"
               >
                 교육 프로그램 보기
               </Link>
               <Link 
                 href="#location" 
-                className="px-8 py-4 bg-white border-2 border-piano-green text-piano-green font-bold rounded-xl text-center hover:bg-piano-green/5 transition-all"
+                className="px-8 py-4 bg-white border-2 border-piano-green text-piano-green font-bold rounded-xl text-center hover:bg-piano-green/5 transition-all active:scale-95"
               >
                 오시는 길
               </Link>
