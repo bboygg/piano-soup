@@ -1,0 +1,47 @@
+import Link from 'next/link';
+
+export default function Footer() {
+  return (
+    <footer className="bg-piano-black text-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          <div className="col-span-2">
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <span className="w-10 h-10 bg-piano-green rounded-full flex items-center justify-center text-white text-[10px] font-bold tracking-widest">PS</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-white font-serif tracking-tight">피아노숲</span>
+                <span className="text-[8px] text-piano-green-light font-bold tracking-[0.3em] -mt-1 uppercase">Music Studio</span>
+              </div>
+            </Link>
+            <p className="text-gray-400 max-w-sm leading-relaxed mb-6">
+              일상 속 작은 숲, 피아노숲 음악교습소입니다. 
+              당신의 숨은 음악적 감성을 일깨우고 아름다운 성장을 지원합니다.
+            </p>
+          </div>
+          
+          <div>
+            <h4 className="font-bold mb-6">바로가기</h4>
+            <ul className="space-y-4 text-gray-400">
+              <li><Link href="#about" className="hover:text-white transition-colors">교습소 소개</Link></li>
+              <li><Link href="#programs" className="hover:text-white transition-colors">교육 프로그램</Link></li>
+              <li><Link href="#gallery" className="hover:text-white transition-colors">갤러리</Link></li>
+              <li><Link href="#location" className="hover:text-white transition-colors">오시는 길</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-6">연락처</h4>
+            <ul className="space-y-4 text-gray-400">
+              <li>054-633-1999</li>
+              <li><a href="mailto:piano_soup@naver.com" className="hover:text-white transition-colors">piano_soup@naver.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+          <p>© 2026 PIANO SOUP MUSIC STUDIO. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
