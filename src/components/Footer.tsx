@@ -18,7 +18,7 @@ export default function Footer() {
               <span className="w-10 h-10 bg-piano-green rounded-full flex items-center justify-center text-white text-lg font-bold">🌿</span>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-white font-serif tracking-tight">피아노숲</span>
-                <span className="text-[8px] text-piano-green-light font-bold tracking-[0.3em] -mt-1 uppercase">Piano Soup Music Studio</span>
+                <span className="text-[8px] text-piano-green-light font-bold tracking-[0.3em] -mt-1 uppercase">PIANO SOUP MUSIC STUDIO</span>
               </div>
             </Link>
             <div className="text-gray-400 max-w-sm leading-relaxed mb-6 space-y-1">
