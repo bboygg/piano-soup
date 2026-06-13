@@ -147,8 +147,7 @@ export default function Home() {
             </h2>
             <p className="text-white/70 text-xs sm:text-lg mb-8 sm:mb-12 leading-relaxed">
               피아노숲은 언제나 여러분을 기다리고 있어요. <br />
-              궁금한 점이 있다면 언제든 편하게 똑똑- 문을 두드려주세요. <br className="hidden sm:block" />
-              따뜻한 마음으로 맞이하겠습니다.
+              궁금한 점이 있다면 언제든 편하게 똑똑- 문을 두드려주세요.
             </p>
             
             <div className="grid grid-cols-2 gap-3 sm:gap-8 max-w-3xl mx-auto">

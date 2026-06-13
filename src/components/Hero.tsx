@@ -22,7 +22,7 @@ export default function Hero() {
               PIANO SOUP MUSIC STUDIO
             </span>
             <h1 className="text-xl sm:text-3xl lg:text-5xl font-bold text-piano-black leading-[1.3] mb-4 sm:mb-8 break-keep font-serif">
-              <span className="inline-block pl-4 sm:pl-10 mb-2">일상 속 작은 숲,</span> <br />
+              <span className="inline-block pl-2 sm:pl-7 mb-2">일상 속 작은 숲,</span> <br />
               <span className="text-piano-green text-3xl sm:text-4xl lg:text-7xl">피아노숲</span> <br className="sm:hidden" />
               <span className="text-sm sm:text-xl lg:text-3xl font-sans font-medium text-gray-400">음악교습소</span>
             </h1>
