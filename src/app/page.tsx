@@ -18,21 +18,29 @@ export default function Home() {
     setTimeout(() => setShowToast(false), 2000);
   };
 
+  // Optimized animation settings for mobile
+  const fadeUp = {
+    initial: { opacity: 0, y: 15 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-10%" },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
   return (
     <main className="min-h-screen relative overflow-x-hidden">
       <Header />
       <Hero />
       
       {/* About/Philosophy Section */}
-      <section id="about" className="py-24 bg-white overflow-hidden">
+      <section id="about" className="py-12 sm:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="flex-1 w-full">
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
               >
                 <h2 className="text-3xl md:text-5xl font-bold text-piano-black mb-8 leading-tight">
                   왜 <span className="text-piano-green">피아노숲</span> 인가요?
@@ -91,8 +99,8 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
               >
                 <span className="text-piano-green font-bold text-sm tracking-widest uppercase mb-4 block">Meet the Teacher</span>
                 <h2 className="text-3xl md:text-5xl font-bold text-piano-black mb-8 leading-tight font-serif">
@@ -141,8 +149,8 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight font-serif">
               피아노숲에서 시작하는 <br />
@@ -154,10 +162,10 @@ export default function Home() {
               부담 없이 편안하게 문의해 주세요.
             </p>
             
-            <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
               <button 
                 onClick={handleCopyPhone}
-                className="bg-white/10 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center group w-full max-w-xs sm:max-w-none mx-auto active:scale-95"
+                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center group w-full max-w-xs sm:max-w-none mx-auto active:scale-95"
               >
                 <h4 className="text-white font-bold mb-4 text-xl">상담 예약 및 문의</h4>
                 <p className="text-white text-xl sm:text-2xl font-bold group-hover:scale-105 transition-transform">054-633-1999</p>
@@ -167,7 +175,7 @@ export default function Home() {
               <a 
                 href="https://open.kakao.com/o/sXXXXXXXX" 
                 target="_blank"
-                className="bg-white/10 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center group flex flex-col justify-center w-full max-w-xs sm:max-w-none mx-auto active:scale-95"
+                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center group flex flex-col justify-center w-full max-w-xs sm:max-w-none mx-auto active:scale-95"
               >
                 <h4 className="text-white font-bold mb-4 text-xl">카카오톡 상담</h4>
                 <p className="text-white text-xl sm:text-2xl font-bold group-hover:scale-105 transition-transform">실시간 오픈채팅 문의</p>
@@ -178,10 +186,10 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Gallery Preview / Instagram Section */}
+      {/* Gallery Section */}
       <section id="gallery" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-piano-black mb-12">피아노숲의 일상</h2>
+          <h2 className="text-3xl font-bold text-piano-black mb-12 font-serif">피아노숲의 일상</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="aspect-square bg-gray-100 rounded-2xl overflow-hidden hover:opacity-90 transition-opacity cursor-pointer">
