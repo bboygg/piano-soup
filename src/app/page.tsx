@@ -23,7 +23,7 @@ export default function Home() {
       <Header />
       <Hero />
       
-      {/* About Section - Forced Row Layout */}
+      {/* About Section */}
       <section id="about" className="py-12 sm:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-4 sm:gap-16 items-center">
@@ -83,7 +83,7 @@ export default function Home() {
 
       <Programs />
 
-      {/* Teacher Section - Forced Row Layout */}
+      {/* Teacher Section */}
       <section id="teacher" className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-4 sm:gap-16 items-center">
@@ -131,7 +131,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Consultation - Already Grid-optimized, refining sizing */}
+      {/* Consultation Section - Restored and softened copy */}
       <section id="consultation" className="py-12 sm:py-24 bg-piano-green relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl sm:blur-3xl"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -146,33 +146,36 @@ export default function Home() {
               <span className="text-white/80">첫 번째 음악 여정</span>
             </h2>
             <p className="text-white/70 text-xs sm:text-lg mb-8 sm:mb-12 leading-relaxed">
-              상담은 예약제로 진행됩니다. <br />
-              방문 전 미리 연락 주시면 감사하겠습니다.
+              피아노숲은 언제나 여러분을 기다리고 있어요. <br />
+              궁금한 점이 있다면 언제든 편하게 똑똑- 문을 두드려주세요. <br className="hidden sm:block" />
+              따뜻한 마음으로 맞이하겠습니다.
             </p>
             
             <div className="grid grid-cols-2 gap-3 sm:gap-8 max-w-3xl mx-auto">
               <button 
                 onClick={handleCopyPhone}
-                className="bg-white/10 backdrop-blur-md p-4 sm:p-10 rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center active:scale-95"
+                className="bg-white/10 backdrop-blur-md p-6 sm:p-10 rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center active:scale-95 group"
               >
-                <h4 className="text-white font-bold mb-1 sm:mb-4 text-[10px] sm:text-xl">상담 예약</h4>
-                <p className="text-white text-[12px] sm:text-2xl font-bold">번호 복사</p>
+                <h4 className="text-white font-bold mb-2 sm:mb-4 text-[10px] sm:text-xl">상담 예약 및 문의</h4>
+                <p className="text-white text-[12px] sm:text-2xl font-bold group-hover:scale-105 transition-transform">054-633-1999</p>
+                <p className="text-[8px] sm:text-xs text-white/40 mt-2 sm:mt-4 italic">클릭하여 번호 복사</p>
               </button>
               
               <a 
                 href="https://open.kakao.com/o/sXXXXXXXX" 
                 target="_blank"
-                className="bg-white/10 backdrop-blur-md p-4 sm:p-10 rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center flex flex-col justify-center active:scale-95"
+                className="bg-white/10 backdrop-blur-md p-6 sm:p-10 rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center flex flex-col justify-center active:scale-95 group"
               >
-                <h4 className="text-white font-bold mb-1 sm:mb-4 text-[10px] sm:text-xl">카카오톡</h4>
-                <p className="text-white text-[12px] sm:text-2xl font-bold">오픈채팅</p>
+                <h4 className="text-white font-bold mb-2 sm:mb-4 text-[10px] sm:text-xl">카카오톡 상담</h4>
+                <p className="text-white text-[12px] sm:text-2xl font-bold group-hover:scale-105 transition-transform">실시간 오픈채팅</p>
+                <p className="text-[8px] sm:text-xs text-white/40 mt-2 sm:mt-4 italic">클릭하여 채팅 시작</p>
               </a>
             </div>
           </motion.div>
         </div>
       </section>
       
-      {/* Gallery - Standardized */}
+      {/* Gallery Section */}
       <section id="gallery" className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-piano-black mb-8 sm:mb-12 font-serif">피아노숲의 일상</h2>

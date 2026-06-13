@@ -24,7 +24,7 @@ export default function Header() {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-piano-black font-serif tracking-tight">피아노숲</span>
-                <span className="text-[8px] text-piano-green font-bold tracking-[0.3em] -mt-1 uppercase">Piano Soup Music Studio</span>
+                <span className="text-[8px] text-piano-green font-bold tracking-[0.3em] -mt-1 uppercase">PIANO SOUP MUSIC STUDIO</span>
               </div>
             </Link>
           </div>
