@@ -42,7 +42,7 @@ export default function Location() {
         
         const mapOptions = {
           center: location,
-          zoom: 17,
+          zoom: 21, // Max zoom
           zoomControl: true,
           zoomControlOptions: {
             position: window.naver.maps.Position.TOP_RIGHT
@@ -51,13 +51,22 @@ export default function Location() {
 
         const map = new window.naver.maps.Map(mapRef.current, mapOptions);
 
-        new window.naver.maps.Marker({
+        const marker = new window.naver.maps.Marker({
           position: location,
           map: map,
           title: '피아노숲 음악교습소',
         });
+
+        // Click event to open Naver Map directly
+        const openNaverMap = () => {
+          window.open('https://naver.me/551JkfQL', '_blank');
+        };
+
+        window.naver.maps.Event.addListener(map, 'click', openNaverMap);
+        window.naver.maps.Event.addListener(marker, 'click', openNaverMap);
+        
       } catch (e) {
-        console.error("Naver Map Render Error:", e);
+        console.error("Naver Map Render Error");
         setAuthError(true);
       }
     }
@@ -109,23 +118,19 @@ export default function Location() {
             </div>
           </div>
 
-          <div className="h-[450px] bg-gray-100 rounded-[32px] overflow-hidden border-8 border-white shadow-xl relative">
+          <div className="h-[450px] bg-gray-100 rounded-[32px] overflow-hidden border-8 border-white shadow-xl relative cursor-pointer" title="클릭하여 네이버 지도로 보기">
             <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
             
             {(!process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID || process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID === 'your_client_id_here') && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center text-gray-500 text-sm p-8 text-center z-20">
-                .env.local 파일에 Naver Maps Client ID를 입력해주세요.
+                지도 설정을 기다리는 중...
               </div>
             )}
             
             {authError && (
               <div className="absolute inset-0 bg-white/90 flex flex-col items-center justify-center p-8 text-center z-30">
-                <p className="text-red-500 font-bold mb-4">인증에 실패했습니다</p>
-                <ul className="text-xs text-gray-600 space-y-2 text-left list-disc pl-4">
-                  <li>Client ID가 정확한지 확인해 주세요.</li>
-                  <li>네이버 클라우드 콘솔의 [Web 서비스 URL]에 <strong>http://localhost:3000</strong>이 등록되어 있는지 확인해 주세요.</li>
-                  <li>Application 설정에서 <strong>Maps (Dynamic Map)</strong> 서비스가 선택되어 있는지 확인해 주세요.</li>
-                </ul>
+                <p className="text-red-500 font-bold mb-4">지도를 불러올 수 없습니다</p>
+                <p className="text-xs text-gray-600">설정 정보를 다시 확인해 주세요.</p>
               </div>
             )}
           </div>

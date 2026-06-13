@@ -5,11 +5,21 @@ import Hero from '@/components/Hero';
 import Programs from '@/components/Programs';
 import Location from '@/components/Location';
 import Footer from '@/components/Footer';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { Check } from 'lucide-react';
 
 export default function Home() {
+  const [showToast, setShowToast] = useState(false);
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText('054-633-1999');
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative">
       <Header />
       <Hero />
       
@@ -60,12 +70,10 @@ export default function Home() {
               >
                 <div className="aspect-square bg-piano-green/5 rounded-[60px] flex items-center justify-center p-8">
                   <div className="w-full h-full bg-white rounded-[40px] shadow-2xl flex items-center justify-center text-piano-green/20">
-                    {/* Placeholder for About Image */}
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5"><path d="M12 19V5l7 7-7 7"/><path d="M12 19V5l-7 7 7 7"/></svg>
                   </div>
                 </div>
               </motion.div>
-              {/* Decorative circle */}
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-piano-green/10 rounded-full blur-2xl -z-10" />
             </div>
           </div>
@@ -110,7 +118,6 @@ export default function Home() {
             
             <div className="flex-1">
               <div className="aspect-[4/5] bg-white rounded-[40px] overflow-hidden shadow-2xl border-8 border-white relative group">
-                {/* Placeholder for Teacher Photo */}
                 <div className="absolute inset-0 bg-piano-green/5 flex items-center justify-center text-piano-green/20 font-serif italic text-2xl group-hover:scale-105 transition-transform duration-700">
                   Teacher Photo
                 </div>
@@ -125,7 +132,6 @@ export default function Home() {
 
       {/* Consultation Section */}
       <section id="consultation" className="py-24 bg-piano-green relative overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-piano-black/10 rounded-full -ml-48 -mb-48 blur-3xl"></div>
 
@@ -145,27 +151,24 @@ export default function Home() {
               부담 없이 편안하게 문의해 주세요.
             </p>
             
-            <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
               <button 
-                onClick={() => {
-                  navigator.clipboard.writeText('054-633-1999');
-                  alert('전화번호가 복사되었습니다.');
-                }}
-                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-left group"
+                onClick={handleCopyPhone}
+                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer text-center group"
               >
-                <h4 className="text-white font-bold mb-2">상담 예약 및 문의</h4>
-                <p className="text-white/60 text-lg group-hover:text-white transition-colors">054-633-1999</p>
-                <p className="text-[10px] text-white/40 mt-2">클릭하여 번호 복사</p>
+                <h4 className="text-white font-bold mb-4 text-xl">상담 예약 및 문의</h4>
+                <p className="text-white text-2xl group-hover:scale-105 transition-transform">054-633-1999</p>
+                <p className="text-xs text-white/40 mt-4">클릭하여 번호 복사</p>
               </button>
               
               <a 
                 href="https://open.kakao.com/o/sXXXXXXXX" 
                 target="_blank"
-                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-left group"
+                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center group flex flex-col justify-center"
               >
-                <h4 className="text-white font-bold mb-2">카카오톡 상담</h4>
-                <p className="text-white/60 text-lg group-hover:text-white transition-colors">실시간 오픈채팅 문의</p>
-                <p className="text-[10px] text-white/40 mt-2">클릭하여 채팅 시작</p>
+                <h4 className="text-white font-bold mb-4 text-xl">카카오톡 상담</h4>
+                <p className="text-white text-2xl group-hover:scale-105 transition-transform">실시간 오픈채팅 문의</p>
+                <p className="text-xs text-white/40 mt-4">클릭하여 채팅 시작</p>
               </a>
             </div>
           </motion.div>
@@ -197,6 +200,23 @@ export default function Home() {
 
       <Location />
       <Footer />
+
+      {/* Modern Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 20, x: '-50%' }}
+            className="fixed bottom-10 left-1/2 z-[100] bg-piano-black text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-white/10"
+          >
+            <div className="w-5 h-5 bg-piano-green rounded-full flex items-center justify-center">
+              <Check size={12} className="text-white" />
+            </div>
+            <span className="text-sm font-medium">전화번호가 클립보드에 복사되었습니다.</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
