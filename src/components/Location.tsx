@@ -15,12 +15,13 @@ export default function Location() {
       return;
     }
 
-    // Check if script already exists to avoid duplicates
+    // Use oapi.map.naver.com as per NCP documentation
+    const scriptUrl = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}&submodules=geocoder`;
+
     if (!document.getElementById('naver-maps-script')) {
       const script = document.createElement('script');
       script.id = 'naver-maps-script';
-      // Added &submodules=geocoder to enable geocoding service
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}&submodules=geocoder`;
+      script.src = scriptUrl;
       script.async = true;
       
       script.onload = () => setIsLoaded(true);
@@ -28,48 +29,62 @@ export default function Location() {
       
       document.head.appendChild(script);
     } else {
+      // If script exists, ensure it has the submodule or just trigger load
       setIsLoaded(true);
     }
   }, []);
 
   useEffect(() => {
-    if (isLoaded && mapRef.current && window.naver) {
-      try {
-        const address = "경상북도 영주시 번영로102번길 30";
-        
-        // Use Naver Geocoder Service to find coordinates for the address
+    if (isLoaded && mapRef.current && window.naver && window.naver.maps) {
+      const address = "경상북도 영주시 번영로102번길 30";
+      
+      const initializeGeocoding = () => {
+        // Double check if Service submodule is actually available
+        if (!window.naver.maps.Service || !window.naver.maps.Service.geocode) {
+          console.log("Naver Maps Service not yet available, retrying...");
+          setTimeout(initializeGeocoding, 200);
+          return;
+        }
+
         window.naver.maps.Service.geocode({
           query: address
         }, (status: any, response: any) => {
           if (status !== window.naver.maps.Service.Status.OK) {
             console.error("Geocoding failed:", status);
+            // Fallback to coordinates if geocoding fails
+            const fallbackLocation = new window.naver.maps.LatLng(36.8212226, 128.6301698);
+            renderMap(fallbackLocation);
             return;
           }
 
           const result = response.v2.addresses[0];
           const location = new window.naver.maps.LatLng(result.y, result.x);
-          
-          const mapOptions = {
-            center: location,
-            zoom: 17,
-            zoomControl: true,
-            zoomControlOptions: {
-              position: window.naver.maps.Position.TOP_RIGHT
-            }
-          };
-
-          const map = new window.naver.maps.Map(mapRef.current!, mapOptions);
-
-          new window.naver.maps.Marker({
-            position: location,
-            map: map,
-            title: '피아노숲 음악교습소',
-          });
+          renderMap(location);
         });
-      } catch (e) {
-        console.error("Naver Map Geocoder Error:", e);
-        setAuthError(true);
-      }
+      };
+
+      const renderMap = (location: any) => {
+        if (!mapRef.current) return;
+        
+        const mapOptions = {
+          center: location,
+          zoom: 17,
+          zoomControl: true,
+          zoomControlOptions: {
+            position: window.naver.maps.Position.TOP_RIGHT
+          }
+        };
+
+        const map = new window.naver.maps.Map(mapRef.current, mapOptions);
+
+        new window.naver.maps.Marker({
+          position: location,
+          map: map,
+          title: '피아노숲 음악교습소',
+        });
+      };
+
+      initializeGeocoding();
     }
   }, [isLoaded]);
 
@@ -122,7 +137,6 @@ export default function Location() {
           <div className="h-[450px] bg-gray-100 rounded-[32px] overflow-hidden border-8 border-white shadow-xl relative">
             <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
             
-            {/* Overlay for Configuration Info */}
             {(!process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID || process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID === 'your_client_id_here') && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center text-gray-500 text-sm p-8 text-center z-20">
                 .env.local 파일에 Naver Maps Client ID를 입력해주세요.
