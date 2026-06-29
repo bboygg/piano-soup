@@ -38,7 +38,7 @@ export default function Programs() {
             피아노숲의 <span className="text-piano-green">교육 프로그램</span>
           </motion.h2>
           <p className="text-xs sm:text-base text-gray-500 max-w-2xl mx-auto">
-            각 연령대와 목표에 최적화된 맞춤형 교육 과정을 통해 음악의 즐거움을 발견하세요.
+            각 연령대와 목표에 최적화된 맞춤형 교육 과정을 통해 <br/>음악의 즐거움을 발견하세요.
           </p>
         </div>
 

@@ -45,10 +45,12 @@ export default function Home() {
                 <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-piano-black mb-4 sm:mb-8 leading-tight font-serif">
                   왜 <span className="text-piano-green">피아노숲</span> 인가요?
                 </h2>
-                <div className="space-y-2 sm:space-y-6 text-[9px] sm:text-lg text-gray-600 leading-relaxed">
+                <div className="space-y-2 sm:space-y-6 text-[8px] sm:text-lg text-gray-600 leading-relaxed">
                   <p>
-                    피아노숲은 내면의 평온함 속에서 음악을 만나는 공간입니다. <br/>
-                    지친 마음을 맑게 정화하고, 피아노 선율을 통해 
+                    피아노숲은 내면의 평온함 속에서 <br/>
+                    음악을 만나는 공간입니다. <br/>
+                    지친 마음을 맑게 정화하고, <br/>
+                    피아노 선율을 통해 
                     나만의 온전한 즐거움을 발견할 수 있도록 돕습니다.
                   </p>
                   <p className="hidden sm:block">
@@ -116,7 +118,7 @@ export default function Home() {
                 </h2>
                 <div className="space-y-2 sm:space-y-6 text-[10px] sm:text-lg text-gray-600 leading-relaxed">
                   <p>
-                    피아노는 기술을 익히는 것보다 자신의 감정을 온전히 실어 보내는 것이 중요합니다. 
+                    피아노는 기술을 익히는 것보다 <br/>자신의 감정을 온전히 실어 보내는 것이 중요합니다. 
                   </p>
                   <ul className="space-y-1 sm:space-y-3 pt-2 sm:pt-6 border-t border-gray-200">
                     <li className="flex items-center gap-1.5 sm:gap-3">
@@ -165,7 +167,7 @@ export default function Home() {
               </button>
               
               <a 
-                href="https://open.kakao.com/o/sXXXXXXXX" 
+                href="https://open.kakao.com/o/sKreaMBi" 
                 target="_blank"
                 className="bg-white/10 backdrop-blur-md p-6 sm:p-10 rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all text-center flex flex-col justify-center active:scale-95 group"
               >

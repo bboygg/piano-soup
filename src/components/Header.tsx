@@ -22,12 +22,10 @@ export default function Header() {
               <div className="relative">
                 <span className="w-10 h-10 bg-piano-green rounded-full flex items-center justify-center text-white text-lg font-bold">🌿</span>
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-end gap-2">
-                  <span className="text-xl font-bold text-piano-black font-serif tracking-tight">피아노숲</span>
-                  <span className="text-[10px] text-gray-400 font-medium mb-1">영주교육청등록 제656호</span>
-                </div>
-                <span className="text-[8px] text-piano-green font-bold tracking-[0.3em] -mt-1 uppercase">PIANO SOUP MUSIC STUDIO</span>
+              <div className="flex flex-col items-start justify-center w-[180px] h-20 mt-2">
+                <span className="text-xl font-bold text-piano-black font-serif tracking-tight">피아노숲</span>
+                <span className="text-[9px] text-piano-green font-extrabold tracking-[0.2em] uppercase whitespace-nowrap">PIANO SOUP MUSIC STUDIO</span>
+                <span className="text-[7px] text-gray-400 font-medium mt-0.5 w-[164px] text-right whitespace-nowrap">영주교육청등록 제656호</span>
               </div>
             </Link>
           </div>
