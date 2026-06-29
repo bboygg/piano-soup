@@ -5,20 +5,20 @@ import { Music, Heart, Star } from 'lucide-react';
 
 const programs = [
   {
-    title: "유아/초등부",
-    description: "음악적 상상력을 키우는 감성 중심 교육. 놀이처럼 즐거운 첫 피아노 경험을 제공합니다.",
+    title: "유아부",
+    description: ["음악적 상상력을 키우는 감성 중심 교육.", "놀이처럼 즐거운 첫 피아노 경험을 제공합니다."],
     icon: <Music className="w-4 h-4 sm:w-6 sm:h-6" />,
     color: "bg-blue-50 text-blue-600"
   },
   {
-    title: "중고등부",
-    description: "기초부터 심화 테크닉까지, 학업 스트레스를 해소하고 자신만의 연주를 완성합니다.",
+    title: "초/중/고등부",
+    description: ["기초부터 꼼꼼하게,", "학업 스트레스를 해소하고 자신만의 연주를 완성합니다."],
     icon: <Star className="w-4 h-4 sm:w-6 sm:h-6" />,
     color: "bg-purple-50 text-purple-600"
   },
   {
     title: "성인 취미부",
-    description: "바쁜 일상 속 나를 위한 시간. 좋아하는 곡을 쉽고 재미있게 배우는 맞춤형 레슨.",
+    description: ["바쁜 일상 속 나를 위한 시간.", "좋아하는 곡을 쉽고 재미있게 배우는 맞춤형 레슨."],
     icon: <Heart className="w-4 h-4 sm:w-6 sm:h-6" />,
     color: "bg-pink-50 text-pink-600"
   }
@@ -57,7 +57,12 @@ export default function Programs() {
               </div>
               <h3 className="text-[10px] sm:text-xl font-bold text-piano-black mb-1 sm:mb-4 break-keep">{program.title}</h3>
               <p className="text-[8px] sm:text-sm text-gray-600 leading-tight sm:leading-relaxed hidden sm:block">
-                {program.description}
+                {program.description.map((line, idx) => (
+                  <span key={idx}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
               </p>
             </motion.div>
           ))}

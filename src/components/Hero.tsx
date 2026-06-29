@@ -27,7 +27,7 @@ export default function Hero() {
               <span className="text-sm sm:text-xl lg:text-3xl font-sans font-medium text-gray-400">음악교습소</span>
             </h1>
             <p className="text-xs sm:text-lg text-gray-600 mb-6 sm:mb-10 max-w-xl leading-relaxed">
-              맑은 공기와 평온함이 가득한 이곳에서 <br className="hidden sm:block" />
+              평온함이 가득한 이곳에서 <br className="hidden sm:block" />
               당신의 음악적 감성을 더욱 깊고 풍성하게 가꾸어 드립니다.
             </p>
             <div className="flex flex-row gap-2 sm:gap-4">
@@ -52,11 +52,8 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative"
           >
-            <div className="aspect-[4/5] bg-gray-100 rounded-2xl sm:rounded-[40px] overflow-hidden shadow-xl sm:shadow-2xl relative border-4 sm:border-8 border-white">
-              <div className="absolute inset-0 bg-gradient-to-tr from-piano-black/20 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center text-gray-300 font-serif italic text-xs sm:text-4xl text-center p-4">
-                Academy Interior <br /> Photo
-              </div>
+            <div className="bg-white p-2 sm:p-4 rounded-2xl sm:rounded-[40px] border-4 sm:border-8 border-white shadow-xl sm:shadow-2xl flex items-center justify-center">
+              <img src="/piano-soup.png" alt="피아노숲 로고 및 인테리어" className="max-w-full h-auto rounded-xl sm:rounded-[32px]" />
             </div>
             
             {/* Floating Card - Scaled for mobile */}

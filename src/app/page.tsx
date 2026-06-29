@@ -7,7 +7,7 @@ import Location from '@/components/Location';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { Check } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Home() {
   const [showToast, setShowToast] = useState(false);
@@ -37,15 +37,15 @@ export default function Home() {
                 <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-piano-black mb-4 sm:mb-8 leading-tight font-serif">
                   왜 <span className="text-piano-green">피아노숲</span> 인가요?
                 </h2>
-                <div className="space-y-2 sm:space-y-6 text-[10px] sm:text-lg text-gray-600 leading-relaxed">
+                <div className="space-y-2 sm:space-y-6 text-[9px] sm:text-lg text-gray-600 leading-relaxed">
                   <p>
-                    피아노숲은 자연의 평온함 속에서 음악을 만나는 공간입니다. 
+                    피아노숲은 내면의 평온함 속에서 음악을 만나는 공간입니다. <br/>
                     지친 마음을 맑게 정화하고, 피아노 선율을 통해 
                     나만의 온전한 즐거움을 발견할 수 있도록 돕습니다.
                   </p>
                   <p className="hidden sm:block">
-                    나무 한 그루가 모여 울창한 숲을 이루듯, 한 곡 한 곡 정성껏 익히며 
-                    당신만의 풍성한 음악 세계를 가꾸어 나가는 여정을 함께합니다.
+                    나무 한 그루가 모여 울창한 숲을 이루듯,<br/> 
+                    한 곡 한 곡 정성껏 익히며 당신만의 풍성한 음악 세계를 가꾸어 나가는 여정을 함께합니다.
                   </p>
                 </div>
                 
@@ -56,7 +56,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-piano-black text-[10px] sm:text-xl mb-1 sm:mb-2">쉼이 있는 공간</h4>
-                    <p className="text-[8px] sm:text-sm text-gray-500">쾌적한 숲 같은 환경</p>
+                    <p className="text-[8px] sm:text-sm text-gray-500"></p>
                   </div>
                 </div>
               </motion.div>
@@ -70,9 +70,7 @@ export default function Home() {
                 className="relative z-10"
               >
                 <div className="aspect-square bg-piano-green/5 rounded-2xl sm:rounded-[60px] flex items-center justify-center p-2 sm:p-8">
-                  <div className="w-full h-full bg-white rounded-xl sm:rounded-[40px] shadow-2xl flex items-center justify-center text-piano-green/20">
-                    <svg className="w-8 h-8 sm:w-32 sm:h-32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5"><path d="M12 19V5l7 7-7 7"/><path d="M12 19V5l-7 7 7 7"/></svg>
-                  </div>
+                  <img src="/acedemy-photo-02.jpeg" alt="피아노숲 학원 내부" className="w-full h-full object-cover rounded-xl sm:rounded-[40px]" />
                 </div>
               </motion.div>
               <div className="absolute -top-4 -right-4 sm:-top-10 sm:-right-10 w-12 h-12 sm:w-40 sm:h-40 bg-piano-green/10 rounded-full blur-xl sm:blur-2xl -z-10" />
@@ -89,12 +87,10 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-4 sm:gap-16 items-center">
             <div className="relative order-2 sm:order-1">
               <div className="aspect-[4/5] bg-white rounded-2xl sm:rounded-[40px] overflow-hidden shadow-2xl border-4 sm:border-8 border-white relative group">
-                <div className="absolute inset-0 bg-piano-green/5 flex items-center justify-center text-piano-green/20 font-serif italic text-xs sm:text-2xl">
-                  Teacher Photo
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-8 bg-gradient-to-t from-piano-black/50 to-transparent">
-                  <p className="text-white font-serif text-[10px] sm:text-2xl font-bold text-center">선생님</p>
-                </div>
+              <img src="/teacher.jpeg" alt="고현주 선생님" className="w-full h-full object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-8 bg-gradient-to-t from-piano-black/50 to-transparent">
+                <p className="text-white font-serif text-[10px] sm:text-2xl font-bold text-center">고현주 선생님</p>
+              </div>
               </div>
             </div>
 
@@ -176,15 +172,40 @@ export default function Home() {
       
       {/* Gallery Section */}
       <section id="gallery" className="py-12 sm:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <h2 className="text-2xl sm:text-3xl font-bold text-piano-black mb-8 sm:mb-12 font-serif">피아노숲의 일상</h2>
-          <div className="grid grid-cols-4 gap-2 sm:gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="aspect-square bg-gray-100 rounded-lg sm:rounded-2xl overflow-hidden hover:opacity-90 transition-opacity cursor-pointer">
-                <div className="w-full h-full flex items-center justify-center text-gray-300 text-[8px] sm:text-sm italic text-center px-1">Piano Forest {i}</div>
-              </div>
-            ))}
+          
+          <div className="relative group">
+            <button 
+              onClick={() => document.getElementById('gallery-scroller')?.scrollBy({left: -300, behavior: 'smooth'})} 
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-transparent text-white p-2 rounded-full hover:bg-black/20 transition-all"
+            >
+              <ChevronLeft size={48} />
+            </button>
+            <div id="gallery-scroller" className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scroll-smooth w-full px-4">
+              {[
+                { src: 'story-1.png' }, { src: 'story-2.png' }, { src: 'story-3.png' }, 
+                { src: 'story-4.png' }, { src: 'story-5.png' }, { src: 'story-6.png' }, 
+                { src: 'academy-photo-01.jpeg' }, { src: 'acedemy-photo-03.jpeg' }, { src: 'acedemy-photo-05.jpeg' }
+              ].map((img, i) => (
+                <button 
+                  key={i} 
+                  commandfor={`gallery-dialog-${i}`} 
+                  command="show-modal"
+                  className="flex-none w-3/4 sm:w-1/3 aspect-square snap-center rounded-2xl overflow-hidden hover:opacity-90 transition-opacity"
+                >
+                  <img src={`/${img.src}`} alt={`피아노숲 일상 ${i + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+            <button 
+              onClick={() => document.getElementById('gallery-scroller')?.scrollBy({left: 300, behavior: 'smooth'})} 
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-transparent text-white p-2 rounded-full hover:bg-black/20 transition-all"
+            >
+              <ChevronRight size={48} />
+            </button>
           </div>
+
           <div className="mt-8 sm:mt-12">
             <a 
               href="https://www.instagram.com/pianosoup2019/" 
@@ -194,6 +215,21 @@ export default function Home() {
               인스타그램에서 더 보기 <span className="text-sm sm:text-xl">→</span>
             </a>
           </div>
+
+          {[
+            { src: 'story-1.png' }, { src: 'story-2.png' }, { src: 'story-3.png' }, 
+            { src: 'story-4.png' }, { src: 'story-5.png' }, { src: 'story-6.png' }, 
+            { src: 'academy-photo-01.jpeg' }, { src: 'acedemy-photo-03.jpeg' }, { src: 'acedemy-photo-05.jpeg' }
+          ].map((img, i) => (
+            <dialog key={i} id={`gallery-dialog-${i}`} className="rounded-2xl p-0 backdrop:bg-black/80 m-auto">
+              <div className="relative">
+                <img src={`/${img.src}`} alt={`피아노숲 일상 ${i + 1}`} className="max-h-[80vh] w-auto" />
+                <button commandfor={`gallery-dialog-${i}`} command="close" className="absolute top-4 right-4 bg-white/50 p-2 rounded-full">
+                  ✕
+                </button>
+              </div>
+            </dialog>
+          ))}
         </div>
       </section>
 

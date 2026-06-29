@@ -23,7 +23,10 @@ export default function Header() {
                 <span className="w-10 h-10 bg-piano-green rounded-full flex items-center justify-center text-white text-lg font-bold">🌿</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-piano-black font-serif tracking-tight">피아노숲</span>
+                <div className="flex items-end gap-2">
+                  <span className="text-xl font-bold text-piano-black font-serif tracking-tight">피아노숲</span>
+                  <span className="text-[10px] text-gray-400 font-medium mb-1">영주교육청등록 제656호</span>
+                </div>
                 <span className="text-[8px] text-piano-green font-bold tracking-[0.3em] -mt-1 uppercase">PIANO SOUP MUSIC STUDIO</span>
               </div>
             </Link>
