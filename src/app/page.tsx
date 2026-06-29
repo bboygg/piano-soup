@@ -8,6 +8,14 @@ import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+
+interface InvokerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  'commandfor'?: string;
+  'command'?: string;
+}
+
+const InvokerButton = (props: InvokerButtonProps) => <button {...props} />;
 
 export default function Home() {
   const [showToast, setShowToast] = useState(false);
@@ -188,14 +196,14 @@ export default function Home() {
                 { src: 'story-4.png' }, { src: 'story-5.png' }, { src: 'story-6.png' }, 
                 { src: 'academy-photo-01.jpeg' }, { src: 'acedemy-photo-03.jpeg' }, { src: 'acedemy-photo-05.jpeg' }
               ].map((img, i) => (
-                <button 
+                <InvokerButton 
                   key={i} 
                   commandfor={`gallery-dialog-${i}`} 
                   command="show-modal"
                   className="flex-none w-3/4 sm:w-1/3 aspect-square snap-center rounded-2xl overflow-hidden hover:opacity-90 transition-opacity"
                 >
                   <img src={`/${img.src}`} alt={`피아노숲 일상 ${i + 1}`} className="w-full h-full object-cover" />
-                </button>
+                </InvokerButton>
               ))}
             </div>
             <button 
@@ -224,9 +232,9 @@ export default function Home() {
             <dialog key={i} id={`gallery-dialog-${i}`} className="rounded-2xl p-0 backdrop:bg-black/80 m-auto">
               <div className="relative">
                 <img src={`/${img.src}`} alt={`피아노숲 일상 ${i + 1}`} className="max-h-[80vh] w-auto" />
-                <button commandfor={`gallery-dialog-${i}`} command="close" className="absolute top-4 right-4 bg-white/50 p-2 rounded-full">
+                <InvokerButton commandfor={`gallery-dialog-${i}`} command="close" className="absolute top-4 right-4 bg-white/50 p-2 rounded-full">
                   ✕
-                </button>
+                </InvokerButton>
               </div>
             </dialog>
           ))}
