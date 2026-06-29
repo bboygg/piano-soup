@@ -16,14 +16,9 @@ export default function Footer() {
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <span className="w-10 h-10 bg-piano-green rounded-full flex items-center justify-center text-white text-lg font-bold">🌿</span>
-              <div className="flex flex-col gap-0 mt-2">
-                <div className="flex items-end gap-2">
-                  <span className="text-xl font-bold text-white font-serif tracking-tight">피아노숲</span>
-                </div>
-                <div className="flex flex-col items-start">
-                  <span className="text-[9px] text-piano-green-light font-extrabold tracking-[0.2em] uppercase whitespace-nowrap">PIANO SOUP MUSIC STUDIO</span>
-                  <span className="text-[7px] text-gray-500 font-medium mt-0.5 w-[164px] text-right whitespace-nowrap">영주교육청등록 제656호</span>
-                </div>
+              <div className="flex items-baseline gap-2 mt-2">
+                <span className="text-2xl font-bold text-white font-serif tracking-tight">피아노숲</span>
+                <span className="text-[8px] text-gray-500 font-medium whitespace-nowrap pb-1">영주교육청등록 제656호</span>
               </div>
             </Link>
             <div className="text-gray-400 max-w-sm leading-relaxed mb-6 space-y-1">

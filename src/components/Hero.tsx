@@ -22,8 +22,9 @@ export default function Hero() {
               PIANO SOUP MUSIC STUDIO
             </span>
             <h1 className="text-xl sm:text-3xl lg:text-5xl font-bold text-piano-black leading-[1.3] mb-4 sm:mb-8 break-keep font-serif">
-              <span className="inline-block pl-1 sm:pl-5 mb-2">일상 속 작은 숲,</span> <br />
-              <span className="text-piano-green text-4xl sm:text-5xl lg:text-8xl">피아노숲</span> <br className="sm:hidden" />
+              {/* Subtitle font size can be adjusted here (e.g., text-sm, text-base, text-lg) */}
+              <span className="inline-block pl-1 sm:pl-5 mb-2 text-[20px] sm:text-4xl">일상 속 작은 숲,</span> <br />
+              <span className="text-piano-green text-4xl sm:text-5xl lg:text-7xl">피아노숲</span> <br className="sm:hidden" />
               <span className="text-sm sm:text-xl lg:text-3xl font-sans font-medium text-gray-400">음악교습소</span>
             </h1>
             <p className="text-xs sm:text-lg text-gray-600 mb-6 sm:mb-10 max-w-xl leading-relaxed">
