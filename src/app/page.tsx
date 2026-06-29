@@ -10,20 +10,50 @@ import { useState } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 
-interface InvokerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  'commandfor'?: string;
-  'command'?: string;
-}
-
-const InvokerButton = (props: InvokerButtonProps) => <button {...props} />;
+const galleryItems = [
+  { src: 'story-1.png', type: 'image' },
+  { src: 'story-2.png', type: 'image' },
+  { src: 'story-3.png', type: 'image' },
+  { src: 'story-4.png', type: 'image' },
+  { src: 'story-5.png', type: 'image' },
+  { src: 'story-6.png', type: 'image' },
+  { src: 'story-7.jpeg', type: 'image' },
+  { src: 'story-8.jpeg', type: 'image' },
+  { src: 'story-9.jpeg', type: 'image' },
+  { src: 'story-10.mp4', type: 'video' },
+  { src: 'story-11.jpeg', type: 'image' },
+  { src: 'story-12.jpeg', type: 'image' },
+  { src: 'story-13.jpeg', type: 'image' },
+  { src: 'story-14.jpeg', type: 'image' },
+  { src: 'story-15.jpeg', type: 'image' }
+];
 
 export default function Home() {
   const [showToast, setShowToast] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText('054-633-1999');
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2000);
+  };
+
+  const openLightbox = (index: number) => {
+    setSelectedImageIndex(index);
+    const dialog = document.getElementById('gallery-lightbox') as HTMLDialogElement;
+    if (dialog) dialog.showModal();
+  };
+
+  const closeLightbox = () => {
+    setSelectedImageIndex(null);
+    const dialog = document.getElementById('gallery-lightbox') as HTMLDialogElement;
+    if (dialog) dialog.close();
+  };
+
+  const navigateLightbox = (direction: number) => {
+    if (selectedImageIndex === null) return;
+    const newIndex = (selectedImageIndex + direction + galleryItems.length) % galleryItems.length;
+    setSelectedImageIndex(newIndex);
   };
 
   return (
@@ -43,31 +73,14 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-piano-black mb-4 sm:mb-8 leading-tight font-serif">
-                  왜 <span className="text-piano-green">피아노숲</span> 인가요?
+                  왜 <span className="text-piano-green">피아노숲</span><span className="text-sm sm:text-2xl">에서는요?</span>
                 </h2>
                 <div className="space-y-2 sm:space-y-6 text-[8px] sm:text-lg text-gray-600 leading-relaxed">
                   <p>
-                    피아노숲은 내면의 평온함 속에서 <br/>
-                    음악을 만나는 공간입니다. <br/>
-                    지친 마음을 맑게 정화하고, <br/>
-                    피아노 선율을 통해 
+                    내면의 평온함 속에서 음악을 만나는 공간입니다. <br/>
+                    지친 마음을 맑게 정화하고, 피아노 선율을 통해 <br/>
                     나만의 온전한 즐거움을 발견할 수 있도록 돕습니다.
                   </p>
-                  <p className="hidden sm:block">
-                    나무 한 그루가 모여 울창한 숲을 이루듯,<br/> 
-                    한 곡 한 곡 정성껏 익히며 당신만의 풍성한 음악 세계를 가꾸어 나가는 여정을 함께합니다.
-                  </p>
-                </div>
-                
-                <div className="mt-4 sm:mt-12 grid grid-cols-2 gap-2 sm:gap-8">
-                  <div>
-                    <h4 className="font-bold text-piano-black text-[10px] sm:text-xl mb-1 sm:mb-2">1:1 맞춤 레슨</h4>
-                    <p className="text-[8px] sm:text-sm text-gray-500">개인별 맞춤형 지도</p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-piano-black text-[10px] sm:text-xl mb-1 sm:mb-2">쉼이 있는 공간</h4>
-                    <p className="text-[8px] sm:text-sm text-gray-500"></p>
-                  </div>
                 </div>
               </motion.div>
             </div>
@@ -127,7 +140,7 @@ export default function Home() {
                     </li>
                     <li className="flex items-center gap-1.5 sm:gap-3">
                       <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-piano-green rounded-full"></span>
-                      <span>개인별 맞춤형 교수법 적용</span>
+                      <span>개인별 맞춤형 레슨</span>
                     </li>
                   </ul>
                 </div>
@@ -193,19 +206,18 @@ export default function Home() {
               <ChevronLeft size={48} />
             </button>
             <div id="gallery-scroller" className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scroll-smooth w-full px-4">
-              {[
-                { src: 'story-1.png' }, { src: 'story-2.png' }, { src: 'story-3.png' }, 
-                { src: 'story-4.png' }, { src: 'story-5.png' }, { src: 'story-6.png' }, 
-                { src: 'academy-photo-01.jpeg' }, { src: 'acedemy-photo-03.jpeg' }, { src: 'acedemy-photo-05.jpeg' }
-              ].map((img, i) => (
-                <InvokerButton 
+              {galleryItems.map((item, i) => (
+                <button 
                   key={i} 
-                  commandfor={`gallery-dialog-${i}`} 
-                  command="show-modal"
+                  onClick={() => openLightbox(i)}
                   className="flex-none w-3/4 sm:w-1/3 aspect-square snap-center rounded-2xl overflow-hidden hover:opacity-90 transition-opacity"
                 >
-                  <img src={`/${img.src}`} alt={`피아노숲 일상 ${i + 1}`} className="w-full h-full object-cover" />
-                </InvokerButton>
+                  {item.type === 'video' ? (
+                    <video src={`/${item.src}`} className="w-full h-full object-cover" muted />
+                  ) : (
+                    <img src={`/${item.src}`} alt={`피아노숲 일상 ${i + 1}`} className="w-full h-full object-cover" />
+                  )}
+                </button>
               ))}
             </div>
             <button 
@@ -226,20 +238,33 @@ export default function Home() {
             </a>
           </div>
 
-          {[
-            { src: 'story-1.png' }, { src: 'story-2.png' }, { src: 'story-3.png' }, 
-            { src: 'story-4.png' }, { src: 'story-5.png' }, { src: 'story-6.png' }, 
-            { src: 'academy-photo-01.jpeg' }, { src: 'acedemy-photo-03.jpeg' }, { src: 'acedemy-photo-05.jpeg' }
-          ].map((img, i) => (
-            <dialog key={i} id={`gallery-dialog-${i}`} className="rounded-2xl p-0 backdrop:bg-black/80 m-auto">
+          <dialog id="gallery-lightbox" className="rounded-2xl p-0 backdrop:bg-black/80 m-auto">
+            {selectedImageIndex !== null && (
               <div className="relative">
-                <img src={`/${img.src}`} alt={`피아노숲 일상 ${i + 1}`} className="max-h-[80vh] w-auto" />
-                <InvokerButton commandfor={`gallery-dialog-${i}`} command="close" className="absolute top-4 right-4 bg-white/50 p-2 rounded-full">
+                {galleryItems[selectedImageIndex].type === 'video' ? (
+                  <video src={`/${galleryItems[selectedImageIndex].src}`} className="max-h-[80vh] w-auto" controls autoPlay />
+                ) : (
+                  <img src={`/${galleryItems[selectedImageIndex].src}`} alt={`피아노숲 일상 ${selectedImageIndex + 1}`} className="max-h-[80vh] w-auto" />
+                )}
+                <button onClick={closeLightbox} className="absolute top-4 right-4 bg-white/50 p-2 rounded-full z-10">
                   ✕
-                </InvokerButton>
+                </button>
+                
+                <button 
+                  onClick={() => navigateLightbox(-1)}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
+                >
+                  <ChevronLeft size={32} />
+                </button>
+                <button 
+                  onClick={() => navigateLightbox(1)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
+                >
+                  <ChevronRight size={32} />
+                </button>
               </div>
-            </dialog>
-          ))}
+            )}
+          </dialog>
         </div>
       </section>
 
