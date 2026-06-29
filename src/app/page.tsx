@@ -73,7 +73,7 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-piano-black mb-4 sm:mb-8 leading-tight font-serif">
-                  왜 <span className="text-piano-green">피아노숲</span><span className="text-sm sm:text-2xl">에서는요?</span>
+                <span className="text-piano-green">피아노숲</span><span className="text-sm sm:text-2xl">에서는요?</span>
                 </h2>
                 <div className="space-y-2 sm:space-y-6 text-[8px] sm:text-lg text-gray-600 leading-relaxed">
                   <p>
