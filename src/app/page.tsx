@@ -109,8 +109,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-4 sm:gap-16 items-center">
             <div className="relative order-2 sm:order-1">
-              <div className="aspect-[4/5] bg-white rounded-2xl sm:rounded-[40px] overflow-hidden shadow-2xl border-4 sm:border-8 border-white relative group">
-              <img src="/teacher.jpeg" alt="고현주 선생님" className="w-full h-full object-cover" />
+              <div className="aspect-square rounded-2xl sm:rounded-[40px] overflow-hidden shadow-2xl border-4 sm:border-8 border-white relative group">
+              <img src="/teacher.jpeg" alt="고현주 선생님" className="w-full h-full object-contain" />
               <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-8 bg-gradient-to-t from-piano-black/50 to-transparent">
                 <p className="text-white font-serif text-[10px] sm:text-2xl font-bold text-center">고현주 선생님</p>
               </div>
